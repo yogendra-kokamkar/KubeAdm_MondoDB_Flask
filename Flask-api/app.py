@@ -32,7 +32,7 @@ def create_task():
     return jsonify(
         message="Task saved successfully!"
     )
-@app.route("/task/<id>", methods=["PUT"])
+@app.route("/task/<id>", methods=["GET","PUT"])
 def update_task(id):
     data = request.get_json(force=True)["task"]
     response = db.task.update_one({"_id": ObjectId(id)}, {"$set": {"task": data}})
